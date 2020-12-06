@@ -187,6 +187,7 @@ public class AssignVolunteerJPanel extends javax.swing.JPanel {
         animalRecord.getMsgList().add(status);
         animalRecord.setStatus(status);
         animalRecord.getVolunteerRequest().setVolunteer(ua);
+        animalRecord.getVolunteerRequest().setStatus(status);
         ua.getWorkQueue().getWorkRequestList().add(animalRecord);
         
         JOptionPane.showMessageDialog(null, "Request sent to volunteer !");

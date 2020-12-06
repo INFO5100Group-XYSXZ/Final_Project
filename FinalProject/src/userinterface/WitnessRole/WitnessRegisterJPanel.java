@@ -246,8 +246,6 @@ public class WitnessRegisterJPanel extends javax.swing.JPanel {
                             if (org instanceof IncidentReportingOrganization) {
                                 UserAccount ua = org.getUserAccountDirectory().createUserAccount(userName, password, employee, new WitnessRole());
                                 ua.setState(state);
-//                                ua.setEnterprise(enterprise);
-//                                ua.setOrg(org);
 
                                 witness.setWitnessAccount(ua);
                                 witness.setCity(city);
@@ -256,6 +254,7 @@ public class WitnessRegisterJPanel extends javax.swing.JPanel {
                                 witness.setZipCode(zipcode);
                                 
                                 org.getWorkQueue().getWorkRequestList().add(witness);
+                                ua.getWorkQueue().getWorkRequestList().add(witness);
                         }
                     }
                 }

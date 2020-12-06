@@ -64,17 +64,17 @@ public class ShelterStaffWorkAreaJPanel extends javax.swing.JPanel {
 
         tblAnimals.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Animal ID", "Type", "Breed", "Age", "Name", "Health Condition", "Status", "Message"
+                "Animal ID", "Type", "Breed", "Age", "Name", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -90,7 +90,6 @@ public class ShelterStaffWorkAreaJPanel extends javax.swing.JPanel {
             tblAnimals.getColumnModel().getColumn(4).setResizable(false);
             tblAnimals.getColumnModel().getColumn(5).setResizable(false);
             tblAnimals.getColumnModel().getColumn(6).setResizable(false);
-            tblAnimals.getColumnModel().getColumn(7).setResizable(false);
         }
 
         btnUpdateInfo.setText("Update Information");
@@ -158,15 +157,14 @@ public class ShelterStaffWorkAreaJPanel extends javax.swing.JPanel {
         
         for (WorkRequest wr : userAccount.getWorkQueue().getWorkRequestList()) {
             if (wr instanceof AnimalRecord) {                             
-                Object row[] = new Object[8];
+                Object row[] = new Object[7];
                 row[0] = wr;
                 row[1] = ((AnimalRecord) wr).getReportingRequest().getAnimalType();
                 row[2] = ((AnimalRecord) wr).getBreed() ==null?"--": ((AnimalRecord) wr).getBreed();
                 row[3] = ((AnimalRecord) wr).getAge() ==null?"--": ((AnimalRecord) wr).getAge();
                 row[4] = ((AnimalRecord) wr).getPetName() ==null?"--": ((AnimalRecord) wr).getPetName();
-                row[5] = ((AnimalRecord) wr).getHealthCondition() ==null?"--": ((AnimalRecord) wr).getHealthCondition();
-                row[6] = ((AnimalRecord) wr).getShelterRequest().getStatus() ==null?"--": ((AnimalRecord) wr).getShelterRequest().getStatus();             
-                row[7] = ((AnimalRecord) wr).getShelterRequest().getLatestMessage()==null?"--": ((AnimalRecord) wr).getShelterRequest().getLatestMessage();
+                row[5] = ((AnimalRecord) wr).getShelterRequest().getStatus() ==null?"--": ((AnimalRecord) wr).getShelterRequest().getStatus();             
+                row[6] = ((AnimalRecord) wr).getShelterRequest().getLatestMessage()==null?"--": ((AnimalRecord) wr).getShelterRequest().getLatestMessage();
                          
                 ((DefaultTableModel) tblAnimals.getModel()).addRow(row);
             }

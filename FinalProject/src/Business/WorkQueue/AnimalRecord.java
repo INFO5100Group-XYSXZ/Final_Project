@@ -5,6 +5,8 @@
 package Business.WorkQueue;
 
 import Business.Location.LocationPoint;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -24,7 +26,7 @@ public class AnimalRecord extends WorkRequest{
     private String petName;
     private String breed;
     private String age;
-    private String healthCondition;
+    private List<String> medicalRecord;
     private String imagePath;
     private String ID;
     private String id;
@@ -38,6 +40,7 @@ public class AnimalRecord extends WorkRequest{
         this.shelterRequest = new ShelterRequest();
         this.shelterStaffRequest = new ShelterStaffRequest();
         this.shelterLocationPoint = new LocationPoint();
+        this.medicalRecord = new ArrayList<>();
         id = String.format("%04d",random.nextInt(10000));
         ID = "A" + id;
     }
@@ -107,12 +110,12 @@ public class AnimalRecord extends WorkRequest{
         this.age = age;
     }
 
-    public String getHealthCondition() {
-        return healthCondition;
+    public List<String> getMedicalRecord() {
+        return medicalRecord;
     }
 
-    public void setHealthCondition(String healthStatus) {
-        this.healthCondition = healthStatus;
+    public void setMedicalRecord(List<String> healthCondition) {
+        this.medicalRecord = healthCondition;
     }
 
     public String getImagePath() {
@@ -148,4 +151,7 @@ public class AnimalRecord extends WorkRequest{
        return ID;   
     }
     
+    public void addMecialRecord(String string){
+        medicalRecord.add(string);
+    }
 }

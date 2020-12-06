@@ -41,7 +41,7 @@
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtLastName" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txtLastName" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
                                                   <Component id="txtFirstName" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -54,10 +54,10 @@
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txtState" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
                                                   <Component id="txtCity" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
-                                                  <Component id="roleComboBox" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="orgComboBox" max="32767" attributes="0"/>
+                                                  <Component id="roleComboBox" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
+                                                  <Component id="txtState" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
+                                                  <Component id="orgComboBox" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Component id="jLabel23" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
