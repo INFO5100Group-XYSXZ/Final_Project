@@ -149,7 +149,7 @@ public class VetProcessJPanel extends javax.swing.JPanel {
 
         ageComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Baby", "Young", "Adult", "Senoir" }));
 
-        sexComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please Select...", "Male", "Female" }));
+        sexComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
 
         btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-info_squared.png"))); // NOI18N
         btnUpdate.setBorderPainted(false);
@@ -172,14 +172,11 @@ public class VetProcessJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(788, 788, 788)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, 0))
+                .addGap(788, 788, 788)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(290, 290, 290)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,39 +192,36 @@ public class VetProcessJPanel extends javax.swing.JPanel {
                                 .addGap(56, 56, 56)
                                 .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(182, 182, 182)))
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(221, 221, 221))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelID, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelID, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(typeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtBreed, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(ageComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(sexComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(150, 150, 150)
-                                        .addComponent(lblPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMedicalRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(194, 194, 194)
-                                .addComponent(btnUpdatePicture))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(163, 163, 163)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(235, 235, 235))))
+                                    .addComponent(typeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtBreed, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ageComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(sexComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(150, 150, 150)
+                                .addComponent(lblPicture, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMedicalRecord, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(194, 194, 194)
+                        .addComponent(btnUpdatePicture))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(163, 163, 163)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(221, 221, 221))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,12 +269,12 @@ public class VetProcessJPanel extends javax.swing.JPanel {
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40))
+                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(jLabel10))))
+                        .addComponent(jLabel10)))
+                .addGap(40, 40, 40))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -293,15 +287,17 @@ public class VetProcessJPanel extends javax.swing.JPanel {
         if (!(animalRecord.getAge() == null)) {
             ageComboBox.setSelectedItem(animalRecord.getAge());
         }
-        if (animalRecord.getSex() != null ) {
+        if (!(animalRecord.getSex() == null) ) {
             sexComboBox.setSelectedItem(animalRecord.getSex());
         }
         if(!(animalRecord.getMedicalRecord() == null)) {
+            String med = "";
             for (String s : animalRecord.getMedicalRecord()) {
-            txtMedicalHistory.append(s);
+                med += s + "\n";
             }
+            txtMedicalHistory.setText(med);
         }
-        sexComboBox.setSelectedIndex(0);
+        //sexComboBox.setSelectedIndex(0);
         
         if (animalRecord.getVetRequest().isAbleForShelter()) {
             checkboxAble.setSelected(true);
@@ -340,7 +336,7 @@ public class VetProcessJPanel extends javax.swing.JPanel {
         txtMedicalHistory.setText("");
         String medical = "";
         for (int i = 0; i < animalRecord.getMedicalRecord().size(); i++) {
-            medical += animalRecord.getMedicalRecord().get(i);          
+            medical += animalRecord.getMedicalRecord().get(i) + "\n";          
         }
         txtMedicalHistory.setText(medical);
         
@@ -353,7 +349,8 @@ public class VetProcessJPanel extends javax.swing.JPanel {
         btnSubmit.setEnabled(true);
         btnUpdatePicture.setEnabled(true);
         
-        btnUpdate.setEnabled(false);
+        btnUpdate.setEnabled(true);
+        btnSubmit.setEnabled(false);
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnUpdatePictureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePictureActionPerformed
@@ -372,7 +369,7 @@ public class VetProcessJPanel extends javax.swing.JPanel {
             im = im.getScaledInstance(lblPicture.getWidth(), lblPicture.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon ii = new ImageIcon(im);
             lblPicture.setIcon(ii);
-            JOptionPane.showMessageDialog(null, "Animal Picture Uploaded Successfully");
+            JOptionPane.showMessageDialog(null, "Animal Picture Uploaded Successfully");            
         }
     }//GEN-LAST:event_btnUpdatePictureActionPerformed
 

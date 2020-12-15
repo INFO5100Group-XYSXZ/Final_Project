@@ -50,7 +50,7 @@ public class YourRequestsJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
             for (WorkRequest adoption : ua.getWorkQueue().getWorkRequestList()) {
                 if (adoption instanceof PetOwnerAdoptionRequest) {
-                Object row[] = new Object[8]; 
+                Object row[] = new Object[9]; 
                 row[0] = ((PetOwnerAdoptionRequest) adoption);
                 row[1] = ((PetOwnerAdoptionRequest) adoption).getAnimal();
                 row[2] = ua.getState();
@@ -58,7 +58,13 @@ public class YourRequestsJPanel extends javax.swing.JPanel {
                 row[4]= ((PetOwnerAdoptionRequest) adoption).getAnimal().getBreed();
                 row[5] = ((PetOwnerAdoptionRequest) adoption).getAnimal().getPetName();
                 row[6] = ((PetOwnerAdoptionRequest) adoption).getAnimal().getAge();
-                row[7] = ((PetOwnerAdoptionRequest) adoption).getAnimal().getShelterRequest().getLatestMessage();
+                row[7] = ((PetOwnerAdoptionRequest) adoption).getAnimal().getStatus();
+                if (adoption.getStatus().equals("Pet Owner Requested") && ((PetOwnerAdoptionRequest) adoption).getAnimal().getStatus().equals("Adopted")) {
+                    row[8] = "Not Approved";
+                    adoption.setLatestMessage("Your request has been denied, if this is your lost pet, pls contact us directly.");
+                }else {
+                    row[8] = adoption.getStatus();
+                }
                 ((DefaultTableModel) requestTable.getModel()).addRow(row);
                 }
             }
@@ -79,15 +85,14 @@ public class YourRequestsJPanel extends javax.swing.JPanel {
                 txtType.setText(((PetOwnerAdoptionRequest) adoption).getAnimal().getReportingRequest().getAnimalType());
                 txtAge.setText(((PetOwnerAdoptionRequest) adoption).getAnimal().getAge());
                 txtBreed.setText(((PetOwnerAdoptionRequest) adoption).getAnimal().getBreed());
-                
+                String med = "";
                 for (String record : ((PetOwnerAdoptionRequest) adoption).getAnimal().getMedicalRecord()) {
-                    txtMedicalRecord.append(record);
+                    med += record + "\n";
                 }
+                txtMedicalRecord.setText(med);
                 
-                for (String msg : ((PetOwnerAdoptionRequest) adoption).getMsgList()) {
-                    txtMessageList.append(msg);
-                }
-                
+                txtMessageList.setText(adoption.getLatestMessage());
+                              
                 String imagePath = ((PetOwnerAdoptionRequest) adoption).getAnimal().getImagePath();
                 Image im = Toolkit.getDefaultToolkit().createImage(imagePath);
                 im = im.getScaledInstance(pictureLabel.getWidth(), pictureLabel.getHeight(), Image.SCALE_SMOOTH);
@@ -106,7 +111,6 @@ public class YourRequestsJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -127,16 +131,11 @@ public class YourRequestsJPanel extends javax.swing.JPanel {
         txtName = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtMedicalRecord = new javax.swing.JTextArea();
+        btnBack = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        btnBack.setText("<< Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Your Requests");
 
@@ -146,17 +145,17 @@ public class YourRequestsJPanel extends javax.swing.JPanel {
 
         requestTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Request ID", "Animal ID", "State", "Type", "Breed", "Pet Name", "Age", "Message"
+                "Request ID", "Animal ID", "State", "Type", "Breed", "Pet Name", "Age", "Animal Status", "Request Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -167,7 +166,7 @@ public class YourRequestsJPanel extends javax.swing.JPanel {
 
         pictureLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pictureLabel.setText("Animal Picture");
-        pictureLabel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pictureLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel8.setText("Breed:");
 
@@ -177,7 +176,7 @@ public class YourRequestsJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Medical Record:");
 
-        jLabel7.setText("Message:");
+        jLabel7.setText("Message From Shelter :");
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel6.setText("Animal ID");
@@ -190,6 +189,15 @@ public class YourRequestsJPanel extends javax.swing.JPanel {
         txtMedicalRecord.setRows(5);
         jScrollPane2.setViewportView(txtMedicalRecord);
 
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
+        btnBack.setBorderPainted(false);
+        btnBack.setContentAreaFilled(false);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -197,16 +205,13 @@ public class YourRequestsJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(btnBack))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 854, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(69, 69, 69)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,37 +226,33 @@ public class YourRequestsJPanel extends javax.swing.JPanel {
                                             .addComponent(txtBreed, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(jLabel4)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(idLabel)))
-                                .addGap(97, 97, 97)
+                                        .addComponent(idLabel))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(208, 208, 208)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pictureLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                                    .addComponent(pictureLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(159, 159, 159))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(527, 527, 527))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(pictureLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(idLabel))
@@ -274,12 +275,19 @@ public class YourRequestsJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(21, 21, 21))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pictureLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(72, 72, 72))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
         container.remove(this);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.previous(container);

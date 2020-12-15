@@ -5,6 +5,7 @@
  */
 package userinterface.HospitalAdminRole;
 
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.AnimalRecord;
 import Business.WorkQueue.WorkRequest;
@@ -21,13 +22,15 @@ public class ProcessCases extends javax.swing.JPanel {
 
     private JPanel container;
     UserAccount userAccount;
+    Organization org;
     /**
      * Creates new form RequestFromVet
      */
-    public ProcessCases(JPanel container, UserAccount ua) {
+    public ProcessCases(JPanel container, UserAccount ua,Organization org) {
         initComponents();
         this.container = container;
         this.userAccount = ua;
+        this.org = org;
         
         popTable();
     }
@@ -111,20 +114,21 @@ public class ProcessCases extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1133, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(180, 180, 180)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(241, 241, 241))
+                        .addGap(5, 5, 5)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(280, 280, 280)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAccept, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(46, 46, 46)
+                                .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))))
+                .addGap(280, 280, 280))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,11 +186,12 @@ public class ProcessCases extends javax.swing.JPanel {
         }
         AnimalRecord ar = (AnimalRecord)tblRequest.getValueAt(row, 0);
         if (ar.getHospitalRequest().getStatus().equals("Hospital Accepted") || ar.getHospitalRequest().getStatus().equals("Vet Assigned")) {
-            JOptionPane.showMessageDialog(null, "Please select a request from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Cannot accept!", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         } else {        
             ar.getHospitalRequest().setStatus("Hospital Accepted");
             JOptionPane.showMessageDialog(null, "Task Accepted, Pls assign a vet");
+            ar.addMessage("Hospital admin accepted case");
             popTable();
         }
     }//GEN-LAST:event_btnAcceptActionPerformed
@@ -205,7 +210,9 @@ public class ProcessCases extends javax.swing.JPanel {
         } else {        
             ar.getHospitalRequest().setStatus("Hospital Declined");
             JOptionPane.showMessageDialog(null, "Task Declined");
+            ar.addMessage("Hospital admin declined case");
             userAccount.getWorkQueue().deleteRequest((WorkRequest)ar);
+            org.getWorkQueue().deleteRequest((WorkRequest)ar);
             popTable();
         }
     }//GEN-LAST:event_btnDeclineActionPerformed

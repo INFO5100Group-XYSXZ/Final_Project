@@ -83,10 +83,8 @@ public class AssignHospitalJPanel extends javax.swing.JPanel {
         @Override
         public void valueChanged(ListSelectionEvent e) {
             int row = tblHospital.getSelectedRow();
-        if(row<0) {
-            JOptionPane.showMessageDialog(null, "Please select a hospital from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+        if(row>=0) {
+
         comboAdmin.removeAllItems();
         Organization org = (Organization)tblHospital.getValueAt(row, 0);
         for (UserAccount ua : org.getUserAccountDirectory().getUserAccountList()) {
@@ -94,6 +92,7 @@ public class AssignHospitalJPanel extends javax.swing.JPanel {
             if (ua.getRole().toString().equals("HospitalAdmin") ) {
                 comboAdmin.addItem(ua);
             }
+        }
         }
       }
     });
@@ -167,6 +166,7 @@ public class AssignHospitalJPanel extends javax.swing.JPanel {
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         btnBack.setBorderPainted(false);
+        btnBack.setContentAreaFilled(false);
         btnBack.setDefaultCapable(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,30 +186,30 @@ public class AssignHospitalJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(txtViewMap, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
-                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(286, 286, 286))
+                        .addGap(56, 56, 56)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(339, 339, 339)
+                                .addComponent(txtViewMap, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(55, 55, 55)
+                                .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, 0)))
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(227, 227, 227)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(comboAdmin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(169, 169, 169)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -278,11 +278,7 @@ public class AssignHospitalJPanel extends javax.swing.JPanel {
         if (ua == null) {
             JOptionPane.showMessageDialog(null, "Please select an hospital admin", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
-        }
-        
-        //HospitalRequest hr = new HospitalRequest();
-        //hr.setHospitalOrg(org);
-        //ua.getWorkQueue().getWorkRequestList().add(hr);       
+        }     
         
         animalRecord.getHospitalRequest().setHospitalOrg(org);
         animalRecord.getHospitalRequest().setStatus("Hospital Assigned");
@@ -293,7 +289,8 @@ public class AssignHospitalJPanel extends javax.swing.JPanel {
         
         JOptionPane.showMessageDialog(null, "Request sent to Hospital Administrator !");
         popTable();
-        System.out.println(org.getLocationP());
+        btnAssign.setEnabled(false);
+        //System.out.println(org.getLocationP());
         //System.out.println(org.getLocationP().getLatitude());
     }//GEN-LAST:event_btnAssignActionPerformed
 

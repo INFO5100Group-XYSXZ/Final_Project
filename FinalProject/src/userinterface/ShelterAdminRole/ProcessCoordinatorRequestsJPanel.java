@@ -48,14 +48,14 @@ public class ProcessCoordinatorRequestsJPanel extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblRequest = new javax.swing.JTable();
-        btnApprove = new javax.swing.JButton();
-        backJButton = new javax.swing.JButton();
-        btnDecline = new javax.swing.JButton();
         btnAssign = new javax.swing.JButton();
         comboStaff = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         txtMessage = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        btnApprove = new javax.swing.JButton();
+        btnDecline = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -84,28 +84,10 @@ public class ProcessCoordinatorRequestsJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblRequest);
 
-        btnApprove.setText("Accept");
-        btnApprove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnApproveActionPerformed(evt);
-            }
-        });
-
-        backJButton.setText("<< Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-
-        btnDecline.setText("Decline");
-        btnDecline.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeclineActionPerformed(evt);
-            }
-        });
-
-        btnAssign.setText("Assign Staff");
+        btnAssign.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-hand_up.png"))); // NOI18N
+        btnAssign.setToolTipText("");
+        btnAssign.setBorderPainted(false);
+        btnAssign.setContentAreaFilled(false);
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
@@ -114,10 +96,39 @@ public class ProcessCoordinatorRequestsJPanel extends javax.swing.JPanel {
 
         comboStaff.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Staff:");
 
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Message:");
+
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
+        btnBack.setText("Back");
+        btnBack.setBorderPainted(false);
+        btnBack.setContentAreaFilled(false);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        btnApprove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-checked.png"))); // NOI18N
+        btnApprove.setBorderPainted(false);
+        btnApprove.setContentAreaFilled(false);
+        btnApprove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApproveActionPerformed(evt);
+            }
+        });
+
+        btnDecline.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-cancel.png"))); // NOI18N
+        btnDecline.setBorderPainted(false);
+        btnDecline.setContentAreaFilled(false);
+        btnDecline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeclineActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -126,62 +137,57 @@ public class ProcessCoordinatorRequestsJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
+                        .addGap(14, 14, 14)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 926, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(458, 458, 458)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(backJButton))
+                        .addGap(510, 510, 510)
+                        .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70)
+                        .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(567, 567, 567)
+                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
+                        .addGap(441, 441, 441)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(comboStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(63, 63, 63)))
-                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(61, 61, 61))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboStaff, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(145, 145, 145))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(backJButton)
-                .addGap(66, 66, 66)
+                .addContainerGap()
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
                 .addComponent(jLabel8)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(comboStaff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)))
-                .addGap(124, 124, 124))
+                    .addComponent(btnApprove, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDecline, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(comboStaff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -218,58 +224,6 @@ public class ProcessCoordinatorRequestsJPanel extends javax.swing.JPanel {
         } 
     }
     
-    private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
-        // TODO add your handling code here:
-//        RequestsViewDetailJPanel jp = new RequestsViewDetailJPanel(container);
-//        container.add("RequestsViewDetailJPanel",jp);
-//        CardLayout layout = (CardLayout)container.getLayout();
-//        layout.next(container);
-        int row = tblRequest.getSelectedRow();
-        if(row<0) {
-             JOptionPane.showMessageDialog(null, "Please select a request from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        AnimalRecord ar = (AnimalRecord)tblRequest.getValueAt(row, 0);
-        
-        if (ar.getShelterRequest().getStatus().equals("Shelter Accepted")) {
-            JOptionPane.showMessageDialog(null, "Already accepted", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }else if (ar.getShelterRequest().getStatus().equals("Shelter Declined")) {
-            JOptionPane.showMessageDialog(null, "Already declined", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        } else {
-            ar.getShelterRequest().setStatus("Shelter Accepted");
-            JOptionPane.showMessageDialog(null, "Accepetd, Animal will arrive soon");
-            popTable();
-        }
-    }//GEN-LAST:event_btnApproveActionPerformed
-
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        container.remove(this);
-        CardLayout layout = (CardLayout) container.getLayout();
-        layout.previous(container);
-    }//GEN-LAST:event_backJButtonActionPerformed
-
-    private void btnDeclineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeclineActionPerformed
-        // TODO add your handling code here:
-        int row = tblRequest.getSelectedRow();
-        if(row<0) {
-             JOptionPane.showMessageDialog(null, "Please select a request from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        AnimalRecord ar = (AnimalRecord)tblRequest.getValueAt(row, 0);
-        if (ar.getShelterRequest().getStatus().equals("Shelter Accepted")) {
-             JOptionPane.showMessageDialog(null, "Already accepted, cannot decline", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        ar.getShelterRequest().setStatus("Shelter Declined");
-        userAccount.getWorkQueue().deleteRequest((WorkRequest)ar);
-        organization.getWorkQueue().deleteRequest((WorkRequest)ar);
-        JOptionPane.showMessageDialog(null, "Declined");
-        popTable();
-    }//GEN-LAST:event_btnDeclineActionPerformed
-
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:'
         int row = tblRequest.getSelectedRow();
@@ -306,11 +260,60 @@ public class ProcessCoordinatorRequestsJPanel extends javax.swing.JPanel {
         popTable();        
     }//GEN-LAST:event_btnAssignActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        container.remove(this);
+        CardLayout layout = (CardLayout) container.getLayout();
+        layout.previous(container);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
+        // TODO add your handling code here:
+        int row = tblRequest.getSelectedRow();
+        if(row<0) {
+             JOptionPane.showMessageDialog(null, "Please select a request from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        AnimalRecord ar = (AnimalRecord)tblRequest.getValueAt(row, 0);
+        
+        if (ar.getShelterRequest().getStatus().equals("Shelter Accepted")) {
+            JOptionPane.showMessageDialog(null, "Already accepted", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }else if (ar.getShelterRequest().getStatus().equals("Shelter Admin Declined")) {
+            JOptionPane.showMessageDialog(null, "Already declined", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            ar.getShelterRequest().setStatus("Shelter Accepted");
+            JOptionPane.showMessageDialog(null, "Accepted, Animal will arrive soon");
+            popTable();
+        }
+    }//GEN-LAST:event_btnApproveActionPerformed
+
+    private void btnDeclineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeclineActionPerformed
+        // TODO add your handling code here:
+        int row = tblRequest.getSelectedRow();
+        if(row<0) {
+             JOptionPane.showMessageDialog(null, "Please select a request from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        AnimalRecord ar = (AnimalRecord)tblRequest.getValueAt(row, 0);
+        if (ar.getShelterRequest().getStatus().equals("Shelter Admin Approved")) {
+             JOptionPane.showMessageDialog(null, "Already approved, cannot decline", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        ar.getShelterRequest().setStatus("Shelter Admin Declined");
+        userAccount.getWorkQueue().deleteRequest((WorkRequest)ar);
+        organization.getWorkQueue().deleteRequest((WorkRequest)ar);
+        JOptionPane.showMessageDialog(null, "Declined");
+        popTable();
+    }//GEN-LAST:event_btnDeclineActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backJButton;
     private javax.swing.JButton btnApprove;
     private javax.swing.JButton btnAssign;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDecline;
     private javax.swing.JComboBox comboStaff;
     private javax.swing.JLabel jLabel2;
